@@ -16,39 +16,34 @@ font-family:tahoma;
 body{
 background:#050510;
 color:white;
-overflow-x:hidden;
 }
 
-/* pages animation */
+/* pages */
 .page{
 display:none;
-opacity:0;
-transform:translateY(15px);
-transition:0.4s;
-padding:40px 20px;
+padding:20px;
+min-height:100vh;
 }
 
-.active{
+.page.active{
 display:block;
-opacity:1;
-transform:translateY(0);
 }
 
 /* header */
 header{
 text-align:center;
-padding:20px;
+padding:15px;
 background:rgba(255,255,255,0.05);
 }
 
 /* hero */
 .hero{
 text-align:center;
-padding:70px 20px;
+padding:50px 10px;
 }
 
 h1{
-font-size:50px;
+font-size:40px;
 background:linear-gradient(90deg,#00c3ff,#b700ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -56,29 +51,31 @@ background:linear-gradient(90deg,#00c3ff,#b700ff);
 
 /* buttons */
 .btn{
-display:inline-block;
-margin:10px;
-padding:12px 25px;
+display:block;
+width:90%;
+max-width:300px;
+margin:10px auto;
+padding:12px;
 border-radius:12px;
 border:none;
+text-align:center;
+color:white;
 cursor:pointer;
 text-decoration:none;
-color:white;
-transition:0.3s;
+font-size:16px;
 }
 
-.btn:hover{transform:scale(1.08);}
 .blue{background:#008cff;}
 .purple{background:#7b2cff;}
 .red{background:#ff4d4d;}
 
-/* form */
+/* box */
 .box{
-margin:20px auto;
-max-width:420px;
 background:rgba(255,255,255,0.05);
 padding:15px;
 border-radius:12px;
+margin:20px auto;
+max-width:400px;
 }
 
 input,textarea{
@@ -87,54 +84,33 @@ margin:8px 0;
 padding:10px;
 border:none;
 outline:none;
+border-radius:8px;
 background:rgba(255,255,255,0.08);
 color:white;
-border-radius:8px;
 }
 
 /* features */
 .features{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-top:40px;
+grid-template-columns:1fr;
+gap:10px;
+margin-top:20px;
 }
 
 .feature{
 background:rgba(255,255,255,0.06);
-padding:20px;
-border-radius:15px;
+padding:12px;
+border-radius:10px;
 text-align:center;
 }
 
-/* admin panel */
-.adminBox{
-background:rgba(255,255,255,0.05);
-padding:15px;
-border-radius:12px;
-max-width:500px;
-margin:20px auto;
-}
-
+/* list */
 .listItem{
 background:rgba(255,255,255,0.08);
 padding:10px;
 margin:8px 0;
-border-radius:8px;
+border-radius:10px;
 font-size:13px;
-}
-
-/* nav */
-.nav{
-text-align:center;
-margin-top:25px;
-}
-
-/* price */
-.price{
-font-size:25px;
-color:#00c3ff;
-margin:10px 0;
 }
 </style>
 </head>
@@ -142,60 +118,38 @@ margin:10px 0;
 <body>
 
 <header>
-<h2>Graham Platform</h2>
+<h3>Graham Platform</h3>
 </header>
 
 <!-- HOME -->
-<section id="home" class="page active">
+<div id="home" class="page active">
 
 <div class="hero">
-
 <h1>GRAHAM BOT</h1>
 
-<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">
-ورود به Graham Bot
-</a>
-
-<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">
-ورود به Bomber Bot
-</a>
+<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Graham Bot</a>
+<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">ورود به Bomber Bot</a>
 
 </div>
 
-<div class="nav">
-
-<button class="btn blue" onclick="showPage('ads')">
-📢 تبلیغ ربات
-</button>
-
-<button class="btn red" onclick="showPage('admin')">
-🛠 پنل مدیریت
-</button>
+<button class="btn blue" onclick="go('ads')">📢 تبلیغ ربات</button>
+<button class="btn red" onclick="go('admin')">🛠 پنل مدیریت</button>
 
 </div>
-
-</section>
 
 <!-- ADS -->
-<section id="ads" class="page">
+<div id="ads" class="page">
 
-<div class="hero">
-
-<h1>تبلیغ ربات</h1>
-
-<p class="price">💰 20,000 تومان</p>
+<h2 style="text-align:center;">تبلیغ ربات</h2>
+<p style="text-align:center;color:#00c3ff;">💰 20,000 تومان</p>
 
 <div class="box">
 
-<input id="botName" placeholder="اسم ربات">
-<input id="botLink" placeholder="لینک ربات">
-<textarea id="botDesc" placeholder="توضیحات"></textarea>
+<input id="name" placeholder="اسم ربات">
+<input id="link" placeholder="لینک ربات">
+<textarea id="desc" placeholder="توضیح"></textarea>
 
-<button class="btn blue" onclick="addAd()">
-📩 ثبت تبلیغ
-</button>
-
-</div>
+<button class="btn blue" onclick="saveAd()">ثبت تبلیغ</button>
 
 </div>
 
@@ -208,104 +162,85 @@ margin:10px 0;
 
 </div>
 
-<div class="nav">
-
-<button class="btn purple" onclick="showPage('home')">
-⬅ برگشت
-</button>
+<button class="btn purple" onclick="go('home')">⬅ برگشت</button>
 
 </div>
-
-</section>
 
 <!-- ADMIN -->
-<section id="admin" class="page">
+<div id="admin" class="page">
 
-<div class="hero">
-<h1>پنل مدیریت</h1>
-</div>
+<h2 style="text-align:center;">پنل مدیریت</h2>
 
-<div class="adminBox">
-
-<h3>📢 تبلیغات ثبت شده</h3>
-
+<div class="box">
 <div id="list"></div>
-
 </div>
 
-<div class="nav">
-
-<button class="btn purple" onclick="showPage('home')">
-⬅ برگشت
-</button>
+<button class="btn purple" onclick="go('home')">⬅ برگشت</button>
 
 </div>
-
-</section>
 
 <script>
 
-/* pages */
-function showPage(page){
+/* page switch FIXED for mobile */
+function go(page){
 
 document.querySelectorAll('.page').forEach(p=>{
 p.classList.remove('active');
 });
 
-setTimeout(()=>{
 document.getElementById(page).classList.add('active');
-},100);
 
 }
 
-/* ads storage */
-function addAd(){
+/* save ads */
+function saveAd(){
 
-let name=document.getElementById("botName").value;
-let link=document.getElementById("botLink").value;
-let desc=document.getElementById("botDesc").value;
+let n=document.getElementById("name").value;
+let l=document.getElementById("link").value;
+let d=document.getElementById("desc").value;
 
-if(!name || !link) return;
+if(!n || !l){
+alert("اسم و لینک الزامی است");
+return;
+}
 
-let ads=JSON.parse(localStorage.getItem("ads")||"[]");
+let data=JSON.parse(localStorage.getItem("ads")||"[]");
 
-ads.push({name,link,desc});
+data.push({n,l,d});
 
-localStorage.setItem("ads",JSON.stringify(ads));document.getElementById("botName").value="";
-document.getElementById("botLink").value="";
-document.getElementById("botDesc").value="";
+localStorage.setItem("ads",JSON.stringify(data));
 
-loadAds();
+document.getElementById("name").value="";
+document.getElementById("link").value="";
+document.getElementById("desc").value="";
 
-alert("تبلیغ ثبت شد ✅");
+load();
+
+alert("ثبت شد ✅");
 
 }
 
-/* load admin list */
-function loadAds(){
+/* load admin */
+function load(){
 
 let list=document.getElementById("list");
-if(!list) return;
-
-let ads=JSON.parse(localStorage.getItem("ads")||"[]");
+let data=JSON.parse(localStorage.getItem("ads")||"[]");
 
 list.innerHTML="";
 
-ads.forEach((a,i)=>{
-
+data.forEach(a=>{
 list.innerHTML+=
 <div class="listItem">
-<b>${a.name}</b><br>
-${a.desc}<br>
-<a href="${a.link}" target="_blank" style="color:#00c3ff;">لینک</a>
+<b>${a.n}</b><br>
+${a.d}<br>
+<a href="${a.l}" target="_blank" style="color:#00c3ff;">لینک</a>
 </div>
 ;
-
 });
 
 }
 
-loadAds();
+load();
 
 </script>
 
