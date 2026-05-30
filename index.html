@@ -16,125 +16,99 @@ font-family:tahoma;
 body{
 background:#050510;
 color:white;
+overflow-x:hidden;
 }
 
 /* header */
 header{
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+padding:20px;
+text-align:center;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* hero */
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:55px;
+background:linear-gradient(90deg,#00c3ff,#b700ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+color:#ccc;
+margin-top:10px;
 }
 
 /* buttons */
 .btn{
 display:inline-block;
 margin:10px;
-padding:12px 25px;
-border-radius:12px;
+padding:14px 28px;
+border-radius:15px;
 text-decoration:none;
 color:white;
 transition:.3s;
+font-weight:bold;
 }
 
-.btn:hover{transform:scale(1.05);}
+.btn:hover{
+transform:scale(1.08);
+}
+
 .blue{background:#008cff;}
 .purple{background:#7b2cff;}
 
-/* hero */
-.hero{
-text-align:center;
-padding:60px 20px;
+/* features */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:60px 40px;
 }
 
-.hero h1{
-font-size:50px;
-background:linear-gradient(90deg,#00c3ff,#b700ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-/* chat box */
-.chatBox{
-display:flex;
-height:380px;
-margin:20px;
-border:1px solid rgba(255,255,255,0.1);
-border-radius:15px;
-overflow:hidden;
-}
-
-/* chat */
-#chat{
-flex:1;
-padding:10px;
-overflow:auto;
-}
-
-.msg{
-margin:8px 0;
-padding:8px;
-border-radius:10px;
-max-width:75%;
-}
-
-.user{background:#008cff;margin-left:auto;}
-.ai{background:#7b2cff;}
-
-/* sidebar */
-.sidebar{
-width:220px;
+.card{
 background:rgba(255,255,255,0.05);
-padding:10px;
-border-left:1px solid rgba(255,255,255,0.1);
+padding:25px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
 }
 
-.sidebar h3{
-color:#00c3ff;
-font-size:14px;
-}
-
-.sidebar li{
-font-size:12px;
-margin:6px 0;
-padding:6px;
-background:rgba(255,255,255,0.08);
-border-radius:6px;
-}
-
-/* input */
-.inputBox{
-display:flex;
-margin-top:10px;
-}
-
-input{
-flex:1;
-padding:8px;
-border:none;
-outline:none;
-background:transparent;
-color:white;
-min-width:0;
-}
-
-button{
-padding:8px 12px;
-border:none;
-background:#00c3ff;
-cursor:pointer;
-}
-
-/* admin */
-.admin{
+/* payment */
+.pay{
 text-align:center;
 padding:80px 20px;
 border-top:1px solid rgba(255,255,255,0.1);
 }
 
+.box{
+margin:20px auto;
+max-width:420px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.cardNumber{
+font-size:22px;
+color:#00c3ff;
+margin-top:10px;
+}
+
+.warn{
+color:#ff4d4d;
+font-size:13px;
+margin-top:10px;
+}
+
+/* footer */
 footer{
 text-align:center;
 padding:40px;
@@ -146,96 +120,64 @@ color:#aaa;
 <body>
 
 <header>
-<h3>Graham Bot</h3>
+<h2>Graham Bot Shop</h2>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-<h1>GRAHAM BOT</h1>
 
-<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Bot</a>
-<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">Bomber Bot</a>
+<h1>خرید ربات Graham</h1>
+<p>ربات مدیریت گروه + ابزارهای حرفه‌ای</p>
+
+<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">
+🤖 ورود به Graham Bot
+</a>
+
+<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">
+💣 ورود به Bomber Bot
+</a>
+
 </section>
 
-<!-- CHAT -->
-<div class="chatBox">
+<!-- FEATURES -->
+<section class="cards">
 
-<!-- chat -->
-<div id="chat"></div>
+<div class="card">✔ مدیریت گروه حرفه‌ای</div>
+<div class="card">✔ ضد لینک و اسپم</div>
+<div class="card">✔ ابزارهای هوشمند</div>
+<div class="card">✔ امنیت بالا</div>
 
-<!-- sidebar -->
-<div class="sidebar">
+</section>
 
-<h3>💡 چی بپرسی؟</h3>
-<ul>
-<li>سلام</li>
-<li>خوبی</li>
-<li>اسمت چیه</li>
-<li>کمک</li>
-<li>سایت</li>
-</ul>
+<!-- PAYMENT -->
+<section class="pay">
 
-<div class="inputBox">
-<input id="msg" placeholder="پیام...">
-<button onclick="send()">➤</button>
+<h2>💳 پرداخت</h2>
+
+<div class="box">
+
+<p>💰 قیمت: 20,000 تومان</p>
+
+<p>💳 شماره کارت:</p>
+<div class="cardNumber">6219861956081052</div>
+
+<p>به نام: عابدی</p>
+
 </div>
 
-</div>
+<a class="btn purple" href="https://rubika.ir/admin10blue" target="_blank">
+📩 ارسال رسید در روبیکا
+</a>
 
-</div>
+<p class="warn">
+⚠️ بعد از پرداخت رسید را فقط در روبیکا ارسال کنید
+</p>
 
-<!-- ADMIN -->
-<section class="admin">
-<h2>👑 مدیریت</h2>
-<p>@admin10blue</p>
-
-<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">ادمین</a>
-<a class="btn purple" href="https://rubika.ir/GrahamBot" target="_blank">بات</a>
 </section>
 
 <footer>
 © 2026 Graham Bot
 </footer>
-
-<script>
-
-function send(){
-let input=document.getElementById("msg");
-let text=input.value.trim();
-if(!text) return;
-
-add(text,"user");
-
-setTimeout(()=>{
-add(reply(text),"ai");
-},300);
-
-input.value="";
-}
-
-function add(text,type){
-let chat=document.getElementById("chat");
-let div=document.createElement("div");
-div.className="msg "+type;
-div.innerText=text;
-chat.appendChild(div);
-chat.scrollTop=chat.scrollHeight;
-}
-
-/* 🧠 smart replies */
-function reply(t){
-t=t.toLowerCase();
-
-if(t.includes("سلام")) return "سلام 👋 خوش اومدی";
-if(t.includes("خوبی")) return "خوبم 😎 تو چطوری؟";
-if(t.includes("اسمت")) return "من Graham AI هستم 🤖";
-if(t.includes("کمک")) return "هر سوالی داری بپرس 💡";
-if(t.includes("سایت")) return "این سایت برای ربات Graham ساخته شده 🚀";
-
-return "جالب گفتی 😎";
-}
-
-</script>
 
 </body>
 </html>
