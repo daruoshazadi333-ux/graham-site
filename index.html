@@ -1,219 +1,351 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graham Support</title>
+<title>Graham Bot</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
+}
+
 body{
-    margin:0;
-    font-family:sans-serif;
-    background:#0b0f2a;
-    color:white;
+background:#050510;
+color:white;
+overflow-x:hidden;
+}
+
+/* 🌌 ستاره‌ها */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+opacity:0.6;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+from{transform:translateY(-10vh);}
+to{transform:translateY(110vh);}
 }
 
 /* header */
 header{
-    text-align:center;
-    padding:40px;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-/* chat */
-#support{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:280px;
-    background:#111;
-    border:1px solid #00ffcc;
-    border-radius:12px;
-    overflow:hidden;
+.logo{
+height:70px;
+border-radius:20px;
+box-shadow:0 0 25px #6d5cff;
 }
 
-#title{
-    background:#00ffcc;
-    color:black;
-    padding:8px;
-    font-weight:bold;
-    text-align:center;
+/* hero */
+.hero{
+text-align:center;
+padding:60px 20px;
+}
+
+.hero h1{
+font-size:55px;
+background:linear-gradient(90deg,#00c3ff,#b700ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:15px 30px;
+border-radius:15px;
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.btn:hover{transform:scale(1.08);}
+
+.blue{background:#008cff;}
+.purple{background:#7b2cff;}
+
+/* cards */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.1);
+}
+
+/* stats */
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+text-align:center;
+padding:40px;
+}
+
+.stat h2{
+font-size:40px;
+color:#8c6cff;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#aaa;
+}
+
+/* 💬 SUPPORT */
+#supportBox{
+position:fixed;
+bottom:20px;
+right:20px;
+width:270px;
+background:rgba(0,0,0,0.8);
+border:1px solid #00c3ff;
+border-radius:12px;
+overflow:hidden;
+}
+
+.supportHeader{
+background:#00c3ff;
+color:black;
+padding:8px;
+text-align:center;
+font-weight:bold;
 }
 
 #chat{
-    height:200px;
-    overflow:auto;
-    padding:10px;
+height:180px;
+overflow:auto;
+padding:10px;
+font-size:13px;
 }
 
 .msg{
-    background:rgba(255,255,255,0.1);
-    margin:5px 0;
-    padding:6px;
-    border-radius:8px;
+background:rgba(255,255,255,0.1);
+margin:5px 0;
+padding:6px;
+border-radius:8px;
 }
 
-/* input */
-#inputBox{
-    display:flex;
-    border-top:1px solid #333;
+.inputBox{
+display:flex;
+border-top:1px solid #333;
 }
 
-#inputBox input{
-    flex:1;
-    padding:8px;
-    border:none;
-    background:transparent;
-    color:white;
+.inputBox input{
+flex:1;
+border:none;
+padding:8px;
+background:transparent;
+color:white;
+outline:none;
 }
 
-#inputBox button{
-    background:#00ffcc;
-    border:none;
-    padding:8px;
-    cursor:pointer;
+.inputBox button{
+background:#00c3ff;
+border:none;
+padding:8px;
+cursor:pointer;
 }
 
-/* admin */
-#admin{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:black;
-    display:none;
-    flex-direction:column;
-    padding:20px;
+/* 🛠️ ADMIN */
+#adminPanel{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+flex-direction:column;
+padding:20px;
 }
 
-.panel{
-    max-width:500px;
-    margin:auto;
-    background:#111;
-    padding:20px;
-    border-radius:12px;
-    border:1px solid #00ffcc;
+.adminBox{
+max-width:500px;
+margin:auto;
+background:#111;
+padding:20px;
+border-radius:12px;
+border:1px solid #00c3ff;
 }
 
 .msgBox{
-    background:rgba(0,255,204,0.1);
-    padding:8px;
-    margin:5px 0;
-    border-radius:8px;
-}
-
-button{
-    cursor:pointer;
+background:rgba(0,195,255,0.1);
+padding:8px;
+margin:5px 0;
+border-radius:8px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🌌 ستاره‌ها -->
+<div class="stars" id="stars"></div>
+
 <header>
-    <h1>🤖 Graham Support</h1>
-    <button onclick="openAdmin()">ورود ادمین</button>
+<h2>Graham</h2>
+<img src="logo.png" class="logo">
 </header>
 
-<!-- 💬 user chat -->
-<div id="support">
-    <div id="title">💬 پشتیبانی</div>
+<section class="hero">
+<h1>GRAHAM BOT</h1>
 
-    <div id="chat"></div>
+<p>ربات مدیریت و ابزارهای هوشمند</p>
 
-    <div id="inputBox">
-        <input id="txt" placeholder="پیام..." />
-        <button onclick="send()">➤</button>
-    </div>
+<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Bot</a>
+<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">Bomber Bot</a>
+
+<br>
+
+<button class="btn blue" onclick="openAdmin()">پنل پشتیبانی</button>
+</section>
+
+<section class="stats">
+<div><h2>5000+</h2><p>کاربر</p></div>
+<div><h2>400+</h2><p>گروه</p></div>
+<div><h2>99.9%</h2><p>پایداری</p></div>
+</section>
+
+<section class="cards">
+<div class="card"><h3>مدیریت گروه</h3></div>
+<div class="card"><h3>ضدلینک</h3></div>
+<div class="card"><h3>ضداسپم</h3></div>
+<div class="card"><h3>هوش مصنوعی</h3></div>
+<div class="card"><h3>دانلودر</h3></div>
+<div class="card"><h3>امنیت</h3></div>
+</section>
+
+<footer>
+© 2026 Graham Bot
+</footer>
+
+<!-- 💬 SUPPORT -->
+<div id="supportBox">
+<div class="supportHeader">پشتیبانی</div>
+
+<div id="chat"></div>
+
+<div class="inputBox">
+<input id="msg" placeholder="پیام..." />
+<button onclick="sendMsg()">➤</button>
+</div>
 </div>
 
-<!-- 🛠️ admin panel -->
-<div id="admin">
-    <div class="panel">
+<!-- 🛠️ ADMIN -->
+<div id="adminPanel">
+<div class="adminBox"><h2>پنل ادمین</h2>
 
-        <h2>🛠️ پنل ادمین</h2>
+<input id="pass" type="password" placeholder="رمز..." />
+<button onclick="login()">ورود</button>
 
-        <input id="pass" type="password" placeholder="رمز..." />
-        <button onclick="login()">ورود</button>
+<hr>
 
-        <hr>
+<div id="msgs"></div>
 
-        <div id="list"></div>
+<button onclick="closeAdmin()">بستن</button>
 
-        <button onclick="closeAdmin()">بستن</button>
-    </div>
+</div>
 </div>
 
 <script>
 
-let msgs = JSON.parse(localStorage.getItem("msgs") || "[]");
+/* 🌌 stars */
+const stars=document.getElementById("stars");
+for(let i=0;i<80;i++){
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"%";
+s.style.animationDuration=(2+Math.random()*5)+"s";
+stars.appendChild(s);
+}
 
-/* نمایش چت کاربر */
+/* 💬 messages */
+let messages=JSON.parse(localStorage.getItem("msgs")||"[]");
+
 function render(){
-    let chat = document.getElementById("chat");
-    chat.innerHTML = "";
-
-    msgs.forEach(m=>{
-        let d = document.createElement("div");
-        d.className="msg";
-        d.innerText="👤 "+m;
-        chat.appendChild(d);
-    });
-
-    chat.scrollTop = chat.scrollHeight;
+let chat=document.getElementById("chat");
+chat.innerHTML="";
+messages.forEach(m=>{
+let d=document.createElement("div");
+d.className="msg";
+d.innerText="👤 "+m;
+chat.appendChild(d);
+});
+chat.scrollTop=chat.scrollHeight;
 }
 render();
 
-/* ارسال پیام */
-function send(){
-    let t = document.getElementById("txt");
-    if(t.value.trim()=="") return;
+function sendMsg(){
+let input=document.getElementById("msg");
+if(input.value.trim()=="") return;
 
-    msgs.push(t.value);
-    localStorage.setItem("msgs", JSON.stringify(msgs));
+messages.push(input.value);
+localStorage.setItem("msgs",JSON.stringify(messages));
 
-    t.value="";
-    render();
+input.value="";
+render();
 }
 
-/* admin */
+/* 🛠️ admin */
 function openAdmin(){
-    document.getElementById("admin").style.display="flex";
+document.getElementById("adminPanel").style.display="flex";
 }
 
 function closeAdmin(){
-    document.getElementById("admin").style.display="none";
+document.getElementById("adminPanel").style.display="none";
 }
 
 function login(){
-    let p = document.getElementById("pass").value;
+let pass=document.getElementById("pass").value;
 
-    if(p === "Armin92abedi920"){
-        show();
-    } else {
-        alert("❌ رمز اشتباه");
-    }
+if(pass==="Armin92abedi920"){
+show();
+}else{
+alert("❌ رمز اشتباه");
+}
 }
 
 function show(){
-    let list = document.getElementById("list");
-    list.innerHTML="";
+let box=document.getElementById("msgs");
+box.innerHTML="";
 
-    msgs.forEach((m,i)=>{
-        let d = document.createElement("div");
-        d.className="msgBox";
-        d.innerHTML = (i+1)+". "+m+
-         <button onclick="del(${i})">حذف</button>;
-        list.appendChild(d);
-    });
-}
-
-/* حذف پیام */
-function del(i){
-    msgs.splice(i,1);
-    localStorage.setItem("msgs", JSON.stringify(msgs));
-    show();
-    render();
+messages.forEach((m,i)=>{
+let d=document.createElement("div");
+d.className="msgBox";
+d.innerHTML=(i+1)+". "+m;
+box.appendChild(d);
+});
 }
 
 </script>
