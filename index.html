@@ -1,176 +1,191 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graham Bot</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:tahoma;
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: radial-gradient(circle at top, #0b0f2a, #000);
+    color: white;
+    overflow-x: hidden;
 }
 
-body{
-background:#050510;
-color:white;
+/* 🔥 لودینگ */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
 }
 
-/* pages */
-.page{
-display:none;
-padding:40px 20px;
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #333;
+    border-top: 5px solid #00ffcc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-.active{
-display:block;
+@keyframes spin {
+    100% { transform: rotate(360deg); }
 }
 
-/* header */
-header{
-text-align:center;
-padding:20px;
-background:rgba(255,255,255,0.05);
+/* وضعیت آنلاین */
+.status {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    padding: 8px 15px;
+    background: rgba(0,255,100,0.15);
+    border: 1px solid #00ff88;
+    border-radius: 20px;
+    font-size: 14px;
 }
 
-/* hero */
-.hero{
-text-align:center;
-padding:80px 20px;
+.status span {
+    color: #00ff88;
+    animation: blink 1s infinite;
 }
 
-h1{
-font-size:50px;
-background:linear-gradient(90deg,#00c3ff,#b700ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+@keyframes blink {
+    50% { opacity: 0.3; }
 }
 
-/* buttons */
-.btn{
-display:inline-block;
-margin:10px;
-padding:12px 25px;
-border-radius:12px;
-text-decoration:none;
-color:white;
-cursor:pointer;
-border:none;
+/* هدر */
+header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    animation: fadeDown 1.5s ease;
 }
 
-.blue{background:#008cff;}
-.purple{background:#7b2cff;}
-
-/* box */
-.box{
-margin:20px auto;
-max-width:400px;
-background:rgba(255,255,255,0.05);
-padding:15px;
-border-radius:12px;
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-input,textarea{
-width:100%;
-margin:8px 0;
-padding:10px;
-border:none;
-outline:none;
-background:rgba(255,255,255,0.08);
-color:white;
-border-radius:8px;
+header h1 {
+    font-size: 40px;
+    margin: 0;
 }
 
-/* nav */
-.nav{
-text-align:center;
-margin-top:20px;
+header p {
+    color: #aaa;
 }
 
-/* price */
-.price{
-font-size:25px;
-color:#00c3ff;
-margin:10px 0;
+/* دکمه ورود */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00ffcc, #0066ff);
+    color: black;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #00ffcc55;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #00ffcc;
+}
+
+/* کارت‌ها */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+}
+
+.card:nth-child(1){ animation-delay: 0.2s; }
+.card:nth-child(2){ animation-delay: 0.4s; }
+.card:nth-child(3){ animation-delay: 0.6s; }
+.card:nth-child(4){ animation-delay: 0.8s; }
+.card:nth-child(5){ animation-delay: 1s; }
+.card:nth-child(6){ animation-delay: 1.2s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: #00ffcc;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
 }
 </style>
+
 </head>
 
 <body>
 
+<!-- 🔥 Loader -->
+<div id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top:20px;color:#00ffcc;">Loading Graham...</p>
+</div>
+
+<div class="status">● <span>آنلاین</span></div>
+
 <header>
-<h2>Graham Platform</h2>
+    <h1>🤖 Graham Bot</h1>
+    <p>🚀 Bomber Bot | امنیت | مدیریت | ابزارهای هوشمند</p>
+
+    <!-- 🚀 دکمه ورود -->
+    <a class="btn" href="https://t.me/YourBotLink" target="_blank">
+        ورود به ربات
+    </a>
 </header>
 
-<!-- HOME PAGE -->
-<section id="home" class="page active">
-
-<div class="hero">
-
-<h1>GRAHAM BOT</h1>
-
-<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">
-ورود به Graham Bot
-</a>
-
-<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">
-ورود به Bomber Bot
-</a>
-
+<div class="container">
+    <div class="card">📊 5000+ کاربر</div>
+    <div class="card">👥 400+ گروه</div>
+    <div class="card">⚡ 99.9% پایداری</div>
+    <div class="card">🛡️ ضد اسپم و امنیت</div>
+    <div class="card">📰 اخبار و بروزرسانی‌ها</div>
+    <div class="card">📱 سازگار با موبایل</div>
 </div>
 
-<div class="nav">
-
-<button class="btn blue" onclick="showPage('ads')">
-📢 تبلیغ ربات
-</button>
-
-</div>
-
-</section>
-
-<!-- ADS PAGE -->
-<section id="ads" class="page">
-
-<div class="hero">
-
-<h1>تبلیغ ربات</h1>
-
-<p class="price">💰 20,000 تومان</p>
-
-<div class="box">
-
-<input placeholder="اسم ربات">
-<input placeholder="لینک ربات">
-<textarea placeholder="توضیح ربات"></textarea>
-
-<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">
-📩 ارسال درخواست در روبیکا
-</a>
-
-</div>
-
-</div>
-
-<div class="nav">
-
-<button class="btn purple" onclick="showPage('home')">
-⬅ برگشت به صفحه اصلی
-</button>
-
-</div>
-
-</section>
+<footer>
+    👑 مدیریت: @admin10blue
+</footer>
 
 <script>
-function showPage(page){
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
-});
-document.getElementById(page).classList.add('active');
-}
+setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+}, 2000);
 </script>
 
 </body>
