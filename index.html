@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graham Ads</title>
+<title>Graham</title>
 
 <style>
 *{
@@ -46,31 +46,12 @@ color:#ccc;
 margin-top:10px;
 }
 
-/* buttons */
-.btn{
-display:inline-block;
-margin:10px;
-padding:14px 28px;
-border-radius:15px;
-text-decoration:none;
-color:white;
-transition:.3s;
-font-weight:bold;
-}
-
-.btn:hover{
-transform:scale(1.08);
-}
-
-.blue{background:#008cff;}
-.purple{background:#7b2cff;}
-
-/* ads section */
-.ads{
-padding:60px 40px;
+/* ads cards */
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+padding:60px 40px;
 }
 
 .card{
@@ -99,19 +80,49 @@ color:#00c3ff;
 margin-top:10px;
 }
 
-/* contact */
-.contact{
+/* button */
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 28px;
+border-radius:15px;
+text-decoration:none;
+color:white;
+transition:.3s;
+font-weight:bold;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+.blue{background:#008cff;}
+.purple{background:#7b2cff;}
+
+/* form */
+.form{
 text-align:center;
 padding:80px 20px;
 }
 
 .box{
 margin:20px auto;
-max-width:420px;
+max-width:450px;
 background:rgba(255,255,255,0.05);
 padding:20px;
 border-radius:15px;
 border:1px solid rgba(255,255,255,0.1);
+}
+
+input,textarea{
+width:100%;
+margin:8px 0;
+padding:10px;
+border:none;
+outline:none;
+border-radius:10px;
+background:rgba(255,255,255,0.08);
+color:white;
 }
 
 .warn{
@@ -138,18 +149,18 @@ color:#aaa;
 <!-- HERO -->
 <section class="hero">
 
-<h1>تبلیغ ربات در Graham</h1>
-<p>رباتت رو بیار بالا 🚀 ما برات تبلیغ می‌کنیم</p>
+<h1>تبلیغ رباتت در Graham</h1>
+<p>رباتت رو اینجا معرفی کن 🚀 ما تبلیغش می‌کنیم</p>
 
 </section>
 
-<!-- ADS INFO -->
-<section class="ads">
+<!-- FEATURES -->
+<section class="cards">
 
-<div class="card">🔥 نمایش در سایت اصلی</div>
-<div class="card">👀 دیده شدن توسط کاربران</div>
-<div class="card">🚀 افزایش عضو ربات</div>
-<div class="card">📢 تبلیغ در کانال‌ها</div>
+<div class="card">🔥 نمایش در سایت</div>
+<div class="card">👀 دیده شدن کاربران</div>
+<div class="card">🚀 افزایش عضو</div>
+<div class="card">📢 تبلیغ حرفه‌ای</div>
 
 </section>
 
@@ -160,26 +171,28 @@ color:#aaa;
 <div class="price">20,000 تومان</div>
 
 <p style="color:#ccc;margin-top:10px;">
-برای یک بار نمایش تبلیغ ربات شما
+برای نمایش ربات شما در سایت
 </p>
 
 </section>
 
-<!-- CONTACT -->
-<section class="contact">
+<!-- FORM -->
+<section class="form">
 
 <h2>📩 ثبت تبلیغ</h2>
 
 <div class="box">
 
-<p>برای ثبت تبلیغ وارد روبیکا شوید:</p>
+<input placeholder="اسم ربات">
+<input placeholder="لینک ربات">
+<textarea placeholder="توضیح کوتاه ربات"></textarea>
 
 <a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">
-ارتباط با ادمین
+💬 ارسال درخواست در روبیکا
 </a>
 
 <p class="warn">
-⚠️ بعد از پرداخت، فقط در روبیکا پیام بدهید
+⚠️ بعد از پرداخت، اطلاعات ربات را در روبیکا ارسال کنید
 </p>
 
 </div>
