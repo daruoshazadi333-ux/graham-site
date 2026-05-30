@@ -47,7 +47,7 @@ padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
@@ -63,16 +63,22 @@ box-shadow:0 0 25px #6d5cff;
 /* hero */
 .hero{
 text-align:center;
-padding:60px 20px;
+padding:110px 20px;
 }
 
 .hero h1{
-font-size:55px;
+font-size:60px;
 background:linear-gradient(90deg,#00c3ff,#b700ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
+.hero p{
+color:#ccc;
+margin-top:10px;
+}
+
+/* buttons */
 .btn{
 display:inline-block;
 margin:10px;
@@ -84,32 +90,19 @@ transition:.3s;
 cursor:pointer;
 }
 
-.btn:hover{transform:scale(1.08);}
+.btn:hover{
+transform:scale(1.08);
+}
 
 .blue{background:#008cff;}
 .purple{background:#7b2cff;}
-
-/* cards */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:40px;
-}
-
-.card{
-background:rgba(255,255,255,.05);
-padding:25px;
-border-radius:25px;
-border:1px solid rgba(255,255,255,.1);
-}
 
 /* stats */
 .stats{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 text-align:center;
-padding:40px;
+padding:100px 20px;
 }
 
 .stat h2{
@@ -117,44 +110,80 @@ font-size:40px;
 color:#8c6cff;
 }
 
-footer{
-text-align:center;
-padding:40px;
-color:#aaa;
+/* cards */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:100px 40px;
 }
 
-/* 💬 support */
-#supportBox{
-position:fixed;
-bottom:20px;
-right:20px;
-width:270px;
-background:rgba(0,0,0,0.8);
-border:1px solid #00c3ff;
-border-radius:12px;
+.card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+/* admin */
+.adminSection{
+text-align:center;
+padding:120px 20px;
+background:rgba(255,255,255,0.03);
+border-top:1px solid rgba(255,255,255,0.1);
+border-bottom:1px solid rgba(255,255,255,0.1);
+margin-top:80px;
+}
+
+/* chat page */
+#chatPage{
+display:flex;
+height:500px;
+margin:80px 20px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:20px;
 overflow:hidden;
 }
 
-.supportHeader{
-background:#00c3ff;
-color:black;
-padding:8px;
-text-align:center;
-font-weight:bold;
+.sidebar{
+width:220px;
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-left:1px solid rgba(255,255,255,0.1);
 }
 
-#chat{
-height:180px;
-overflow:auto;
-padding:10px;
+.sidebar h3{
+color:#00c3ff;
+}
+
+.sidebar li{
+margin:10px 0;
+padding:8px;
+background:rgba(255,255,255,0.08);
+border-radius:8px;
 font-size:13px;
 }
 
+#chat{
+flex:1;
+padding:10px;
+overflow:auto;
+}
+
 .msg{
-background:rgba(255,255,255,0.1);
-margin:5px 0;
-padding:6px;
-border-radius:8px;
+margin:8px 0;
+padding:10px;
+border-radius:10px;
+max-width:70%;
+}
+
+.user{
+background:#008cff;
+margin-left:auto;
+}
+
+.ai{
+background:#7b2cff;
 }
 
 .inputBox{
@@ -162,66 +191,33 @@ display:flex;
 border-top:1px solid #333;
 }
 
-.inputBox input{
+input{
 flex:1;
+padding:10px;
 border:none;
-padding:8px;
+outline:none;
 background:transparent;
 color:white;
-outline:none;
 }
 
-.inputBox button{
+button{
+padding:10px;
+border:none;
 background:#00c3ff;
-border:none;
-padding:8px;
 cursor:pointer;
 }
 
-/* 👑 admin popup */
-#adminPopup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.adminBox{
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(0,195,255,0.3);
-padding:30px;
-border-radius:20px;
+/* footer */
+footer{
 text-align:center;
-width:320px;
-animation:pop .3s ease;
-}
-
-@keyframes pop{
-from{transform:scale(0.7);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
-
-.adminBtn{
-position:fixed;
-bottom:90px;
-right:20px;
-padding:12px 18px;
-border:none;
-border-radius:50px;
-background:linear-gradient(90deg,#00c3ff,#7b2cff);
-color:white;
-cursor:pointer;
-box-shadow:0 0 20px rgba(0,195,255,0.4);
+padding:60px;
+color:#aaa;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🌌 stars -->
 <div class="stars" id="stars"></div>
 
 <header>
@@ -229,21 +225,23 @@ box-shadow:0 0 20px rgba(0,195,255,0.4);
 <img src="logo.png" class="logo">
 </header>
 
+<!-- HERO -->
 <section class="hero">
 <h1>GRAHAM BOT</h1>
-
 <p>ربات مدیریت و ابزارهای هوشمند</p>
 
 <a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Bot</a>
 <a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">Bomber Bot</a>
 </section>
 
+<!-- STATS -->
 <section class="stats">
 <div><h2>5000+</h2><p>کاربر</p></div>
 <div><h2>400+</h2><p>گروه</p></div>
 <div><h2>99.9%</h2><p>پایداری</p></div>
 </section>
 
+<!-- CARDS -->
 <section class="cards">
 <div class="card">مدیریت گروه</div>
 <div class="card">ضدلینک</div>
@@ -253,41 +251,42 @@ box-shadow:0 0 20px rgba(0,195,255,0.4);
 <div class="card">امنیت</div>
 </section>
 
-<footer>
-© 2026 Graham Bot
-</footer>
-
-<!-- 💬 support -->
-<div id="supportBox">
-<div class="supportHeader">پشتیبانی</div>
-
-<div id="chat"></div><div class="inputBox">
-<input id="msg" placeholder="پیام..." />
-<button onclick="sendMsg()">➤</button>
-</div>
-</div>
-
-<!-- 👑 admin button -->
-<button class="adminBtn" onclick="openAdmin()">👑 مدیریت</button>
-
-<!-- 👑 admin popup -->
-<div id="adminPopup">
-
-<div class="adminBox">
-
+<!-- 👑 ADMIN -->
+<section class="adminSection">
 <h2>👑 مدیریت</h2>
 <p>ادمین: @admin10blue</p>
 
-<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">💬 روبیکا</a>
+<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">💬 ادمین</a>
 <a class="btn purple" href="https://rubika.ir/GrahamBot" target="_blank">🤖 بات</a>
+</section>
 
-<br><br>
+<!-- 🤖 CHAT SECTION -->
+<div id="chatPage"><!-- chat -->
+<div id="chat"></div>
 
-<button class="btn blue" onclick="closeAdmin()">بستن</button>
+<!-- sidebar -->
+<div class="sidebar">
+<h3>💡 چی بپرسی؟</h3>
+<ul>
+<li>سلام</li>
+<li>حالت چطوره</li>
+<li>اسمت چیه</li>
+<li>کمک</li>
+<li>درباره سایت</li>
+</ul>
 
+<!-- input -->
+<div class="inputBox">
+<input id="msg" placeholder="پیام...">
+<button onclick="send()">➤</button>
 </div>
 
 </div>
+</div>
+
+<footer>
+© 2026 Graham Bot
+</footer>
 
 <script>
 
@@ -298,44 +297,44 @@ for(let i=0;i<80;i++){
 let s=document.createElement("div");
 s.className="star";
 s.style.left=Math.random()*100+"%";
-s.style.animationDuration=(2+Math.random()*5)+"s";
+s.style.animationDuration=(2+Math.random()*6)+"s";
 stars.appendChild(s);
 }
 
-/* support */
-let messages=JSON.parse(localStorage.getItem("msgs")||"[]");
-
-function render(){
-let chat=document.getElementById("chat");
-chat.innerHTML="";
-messages.forEach(m=>{
-let d=document.createElement("div");
-d.className="msg";
-d.innerText="👤 "+m;
-chat.appendChild(d);
-});
-chat.scrollTop=chat.scrollHeight;
-}
-render();
-
-function sendMsg(){
+/* chat AI */
+function send(){
 let input=document.getElementById("msg");
-if(input.value.trim()=="") return;
+if(!input.value) return;
 
-messages.push(input.value);
-localStorage.setItem("msgs",JSON.stringify(messages));
+add(input.value,"user");
+
+setTimeout(()=>{
+add(reply(input.value),"ai");
+},400);
 
 input.value="";
-render();
 }
 
-/* admin */
-function openAdmin(){
-document.getElementById("adminPopup").style.display="flex";
+function add(text,type){
+let chat=document.getElementById("chat");
+let div=document.createElement("div");
+div.className="msg "+type;
+div.innerText=text;
+chat.appendChild(div);
+chat.scrollTop=chat.scrollHeight;
 }
 
-function closeAdmin(){
-document.getElementById("adminPopup").style.display="none";
+/* smart brain */
+function reply(t){
+t=t.toLowerCase();
+
+if(t.includes("سلام")) return "سلام 👋 خوش اومدی!";
+if(t.includes("خوبی")) return "خوبم 😎 تو چطوری؟";
+if(t.includes("اسمت")) return "من Graham AI هستم 🤖";
+if(t.includes("کمک")) return "بگو چی می‌خوای تا کمکت کنم 💡";
+if(t.includes("سایت")) return "این سایت برای ربات Graham ساخته شده 🚀";
+
+return "🤖 هنوز اینو بلد نیستم...";
 }
 
 </script>
