@@ -38,7 +38,7 @@ background:rgba(255,255,255,0.05);
 /* hero */
 .hero{
 text-align:center;
-padding:80px 20px;
+padding:70px 20px;
 }
 
 h1{
@@ -83,6 +83,20 @@ color:white;
 border-radius:8px;
 }
 
+/* features */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-top:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:12px;
+}
+
 /* nav */
 .nav{
 text-align:center;
@@ -104,7 +118,7 @@ margin:10px 0;
 <h2>Graham Platform</h2>
 </header>
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <section id="home" class="page active">
 
 <div class="hero">
@@ -131,7 +145,7 @@ margin:10px 0;
 
 </section>
 
-<!-- ADS PAGE -->
+<!-- ADS -->
 <section id="ads" class="page">
 
 <div class="hero">
@@ -144,13 +158,23 @@ margin:10px 0;
 
 <input placeholder="اسم ربات">
 <input placeholder="لینک ربات">
-<textarea placeholder="توضیح ربات"></textarea>
+<textarea placeholder="توضیحات ربات"></textarea>
 
 <a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">
 📩 ارسال درخواست در روبیکا
 </a>
 
 </div>
+
+</div>
+
+<!-- FEATURES UNDER ADS -->
+<div class="cards">
+
+<div class="card">✔ مدیریت گروه حرفه‌ای</div>
+<div class="card">✔ ضد لینک و اسپم</div>
+<div class="card">✔ ابزارهای هوشمند</div>
+<div class="card">✔ امنیت بالا</div>
 
 </div>
 
