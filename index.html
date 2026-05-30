@@ -16,154 +16,58 @@ font-family:tahoma;
 body{
 background:#050510;
 color:white;
-overflow-x:hidden;
-}
-
-/* 🌌 stars */
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
-}
-
-.star{
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-opacity:0.6;
-animation:fall linear infinite;
-}
-
-@keyframes fall{
-from{transform:translateY(-10vh);}
-to{transform:translateY(110vh);}
 }
 
 /* header */
 header{
-padding:20px;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
-position:sticky;
-top:0;
 border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-.logo{
-height:70px;
-border-radius:20px;
-box-shadow:0 0 25px #6d5cff;
-}
-
-/* hero */
-.hero{
-text-align:center;
-padding:110px 20px;
-}
-
-.hero h1{
-font-size:60px;
-background:linear-gradient(90deg,#00c3ff,#b700ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero p{
-color:#ccc;
-margin-top:10px;
 }
 
 /* buttons */
 .btn{
 display:inline-block;
 margin:10px;
-padding:15px 30px;
-border-radius:15px;
+padding:12px 25px;
+border-radius:12px;
 text-decoration:none;
 color:white;
 transition:.3s;
-cursor:pointer;
 }
 
-.btn:hover{
-transform:scale(1.08);
-}
-
+.btn:hover{transform:scale(1.05);}
 .blue{background:#008cff;}
 .purple{background:#7b2cff;}
 
-/* stats */
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
+/* hero */
+.hero{
 text-align:center;
-padding:100px 20px;
+padding:60px 20px;
 }
 
-.stat h2{
-font-size:40px;
-color:#8c6cff;
+.hero h1{
+font-size:50px;
+background:linear-gradient(90deg,#00c3ff,#b700ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-/* cards */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:100px 40px;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.1);
-}
-
-/* admin */
-.adminSection{
-text-align:center;
-padding:120px 20px;
-background:rgba(255,255,255,0.03);
-border-top:1px solid rgba(255,255,255,0.1);
-border-bottom:1px solid rgba(255,255,255,0.1);
-margin-top:80px;
-}
-
-/* chat page */
-#chatPage{
+/* chat box */
+.chatBox{
 display:flex;
-height:500px;
-margin:80px 20px;
+height:380px;
+margin:20px;
 border:1px solid rgba(255,255,255,0.1);
-border-radius:20px;
+border-radius:15px;
 overflow:hidden;
 }
 
-.sidebar{
-width:220px;
-background:rgba(255,255,255,0.05);
-padding:15px;
-border-left:1px solid rgba(255,255,255,0.1);
-}
-
-.sidebar h3{
-color:#00c3ff;
-}
-
-.sidebar li{
-margin:10px 0;
-padding:8px;
-background:rgba(255,255,255,0.08);
-border-radius:8px;
-font-size:13px;
-}
-
+/* chat */
 #chat{
 flex:1;
 padding:10px;
@@ -172,45 +76,68 @@ overflow:auto;
 
 .msg{
 margin:8px 0;
-padding:10px;
+padding:8px;
 border-radius:10px;
-max-width:70%;
+max-width:75%;
 }
 
-.user{
-background:#008cff;
-margin-left:auto;
+.user{background:#008cff;margin-left:auto;}
+.ai{background:#7b2cff;}
+
+/* sidebar */
+.sidebar{
+width:220px;
+background:rgba(255,255,255,0.05);
+padding:10px;
+border-left:1px solid rgba(255,255,255,0.1);
 }
 
-.ai{
-background:#7b2cff;
+.sidebar h3{
+color:#00c3ff;
+font-size:14px;
 }
 
+.sidebar li{
+font-size:12px;
+margin:6px 0;
+padding:6px;
+background:rgba(255,255,255,0.08);
+border-radius:6px;
+}
+
+/* input */
 .inputBox{
 display:flex;
-border-top:1px solid #333;
+margin-top:10px;
 }
 
 input{
 flex:1;
-padding:10px;
+padding:8px;
 border:none;
 outline:none;
 background:transparent;
 color:white;
+min-width:0;
 }
 
 button{
-padding:10px;
+padding:8px 12px;
 border:none;
 background:#00c3ff;
 cursor:pointer;
 }
 
-/* footer */
+/* admin */
+.admin{
+text-align:center;
+padding:80px 20px;
+border-top:1px solid rgba(255,255,255,0.1);
+}
+
 footer{
 text-align:center;
-padding:60px;
+padding:40px;
 color:#aaa;
 }
 </style>
@@ -218,71 +145,53 @@ color:#aaa;
 
 <body>
 
-<div class="stars" id="stars"></div>
-
 <header>
-<h2>Graham</h2>
-<img src="logo.png" class="logo">
+<h3>Graham Bot</h3>
 </header>
 
 <!-- HERO -->
 <section class="hero">
 <h1>GRAHAM BOT</h1>
-<p>ربات مدیریت و ابزارهای هوشمند</p>
 
 <a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Bot</a>
 <a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">Bomber Bot</a>
 </section>
 
-<!-- STATS -->
-<section class="stats">
-<div><h2>5000+</h2><p>کاربر</p></div>
-<div><h2>400+</h2><p>گروه</p></div>
-<div><h2>99.9%</h2><p>پایداری</p></div>
-</section>
+<!-- CHAT -->
+<div class="chatBox">
 
-<!-- CARDS -->
-<section class="cards">
-<div class="card">مدیریت گروه</div>
-<div class="card">ضدلینک</div>
-<div class="card">ضداسپم</div>
-<div class="card">هوش مصنوعی</div>
-<div class="card">دانلودر</div>
-<div class="card">امنیت</div>
-</section>
-
-<!-- 👑 ADMIN -->
-<section class="adminSection">
-<h2>👑 مدیریت</h2>
-<p>ادمین: @admin10blue</p>
-
-<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">💬 ادمین</a>
-<a class="btn purple" href="https://rubika.ir/GrahamBot" target="_blank">🤖 بات</a>
-</section>
-
-<!-- 🤖 CHAT SECTION -->
-<div id="chatPage"><!-- chat -->
+<!-- chat -->
 <div id="chat"></div>
 
 <!-- sidebar -->
 <div class="sidebar">
+
 <h3>💡 چی بپرسی؟</h3>
 <ul>
 <li>سلام</li>
-<li>حالت چطوره</li>
+<li>خوبی</li>
 <li>اسمت چیه</li>
 <li>کمک</li>
-<li>درباره سایت</li>
+<li>سایت</li>
 </ul>
 
-<!-- input -->
 <div class="inputBox">
 <input id="msg" placeholder="پیام...">
 <button onclick="send()">➤</button>
 </div>
 
 </div>
+
 </div>
+
+<!-- ADMIN -->
+<section class="admin">
+<h2>👑 مدیریت</h2>
+<p>@admin10blue</p>
+
+<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">ادمین</a>
+<a class="btn purple" href="https://rubika.ir/GrahamBot" target="_blank">بات</a>
+</section>
 
 <footer>
 © 2026 Graham Bot
@@ -290,27 +199,16 @@ color:#aaa;
 
 <script>
 
-/* stars */
-const stars=document.getElementById("stars");
-
-for(let i=0;i<80;i++){
-let s=document.createElement("div");
-s.className="star";
-s.style.left=Math.random()*100+"%";
-s.style.animationDuration=(2+Math.random()*6)+"s";
-stars.appendChild(s);
-}
-
-/* chat AI */
 function send(){
 let input=document.getElementById("msg");
-if(!input.value) return;
+let text=input.value.trim();
+if(!text) return;
 
-add(input.value,"user");
+add(text,"user");
 
 setTimeout(()=>{
-add(reply(input.value),"ai");
-},400);
+add(reply(text),"ai");
+},300);
 
 input.value="";
 }
@@ -324,17 +222,17 @@ chat.appendChild(div);
 chat.scrollTop=chat.scrollHeight;
 }
 
-/* smart brain */
+/* 🧠 smart replies */
 function reply(t){
 t=t.toLowerCase();
 
-if(t.includes("سلام")) return "سلام 👋 خوش اومدی!";
+if(t.includes("سلام")) return "سلام 👋 خوش اومدی";
 if(t.includes("خوبی")) return "خوبم 😎 تو چطوری؟";
 if(t.includes("اسمت")) return "من Graham AI هستم 🤖";
-if(t.includes("کمک")) return "بگو چی می‌خوای تا کمکت کنم 💡";
+if(t.includes("کمک")) return "هر سوالی داری بپرس 💡";
 if(t.includes("سایت")) return "این سایت برای ربات Graham ساخته شده 🚀";
 
-return "🤖 هنوز اینو بلد نیستم...";
+return "جالب گفتی 😎";
 }
 
 </script>
