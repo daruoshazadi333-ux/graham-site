@@ -1,192 +1,211 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graham Bot</title>
+<title>Graham</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background: radial-gradient(circle at top, #0b0f2a, #000);
-    color: white;
-    overflow-x: hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
 }
 
-/* 🔥 لودینگ */
-#loader {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 9999;
+body{
+background:#050510;
+color:white;
+overflow-x:hidden;
 }
 
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 5px solid #333;
-    border-top: 5px solid #00ffcc;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+header{
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
 }
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+.logo{
+height:70px;
+border-radius:20px;
+box-shadow:0 0 25px #6d5cff;
 }
 
-/* وضعیت آنلاین */
-.status {
-    position: fixed;
-    top: 10px;
-    right: 15px;
-    padding: 8px 15px;
-    background: rgba(0,255,100,0.15);
-    border: 1px solid #00ff88;
-    border-radius: 20px;
-    font-size: 14px;
+.hero{
+text-align:center;
+padding:60px 20px;
 }
 
-.status span {
-    color: #00ff88;
-    animation: blink 1s infinite;
+.hero h1{
+font-size:60px;
+background:linear-gradient(90deg,#00c3ff,#b700ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-@keyframes blink {
-    50% { opacity: 0.3; }
+.hero p{
+margin-top:15px;
+color:#ccc;
+font-size:20px;
 }
 
-/* هدر */
-header {
-    text-align: center;
-    padding: 80px 20px 40px;
-    animation: fadeDown 1.5s ease;
+.btn{
+display:inline-block;
+margin:10px;
+padding:15px 30px;
+border-radius:15px;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:.3s;
 }
 
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-40px); }
-    to { opacity: 1; transform: translateY(0); }
+.blue{
+background:#008cff;
 }
 
-header h1 {
-    font-size: 40px;
-    margin: 0;
+.purple{
+background:#7b2cff;
 }
 
-header p {
-    color: #aaa;
+.btn:hover{
+transform:scale(1.05);
 }
 
-/* دکمه ورود */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: linear-gradient(90deg, #00ffcc, #0066ff);
-    color: black;
-    font-weight: bold;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: 0.3s;
-    box-shadow: 0 0 20px #00ffcc55;
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:40px;
 }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px #00ffcc;
+.card{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.1);
 }
 
-/* کارت‌ها */
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
+.card h3{
+margin-bottom:10px;
+color:#6fb8ff;
 }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-    transition: 0.4s;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 1s forwards;
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+text-align:center;
+padding:40px;
 }
 
-.card:nth-child(1){ animation-delay: 0.2s; }
-.card:nth-child(2){ animation-delay: 0.4s; }
-.card:nth-child(3){ animation-delay: 0.6s; }
-.card:nth-child(4){ animation-delay: 0.8s; }
-.card:nth-child(5){ animation-delay: 1s; }
-.card:nth-child(6){ animation-delay: 1.2s; }
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.stat h2{
+font-size:40px;
+color:#8c6cff;
 }
 
-.card:hover {
-    transform: translateY(-8px) scale(1.03);
-    border-color: #00ffcc;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #666;
+footer{
+text-align:center;
+padding:40px;
+color:#aaa;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- 🔥 Loader -->
-<div id="loader">
-    <div class="spinner"></div>
-    <p style="margin-top:20px;color:#00ffcc;">Loading Graham...</p>
-</div>
-
-<div class="status">● <span>آنلاین</span></div>
-
 <header>
-    <h1>🤖 Graham Bot</h1>
-    <p>🚀 Bomber Bot | امنیت | مدیریت | ابزارهای هوشمند</p>
-
-    <!-- 🚀 دکمه ورود -->
-    <a class="btn" href="https://t.me/YourBotLink" target="_blank">
-        ورود به ربات
-    </a>
+<h2>Graham</h2>
+<img src="logo.png" class="logo">
 </header>
 
-<div class="container">
-    <div class="card">📊 5000+ کاربر</div>
-    <div class="card">👥 400+ گروه</div>
-    <div class="card">⚡ 99.9% پایداری</div>
-    <div class="card">🛡️ ضد اسپم و امنیت</div>
-    <div class="card">📰 اخبار و بروزرسانی‌ها</div>
-    <div class="card">📱 سازگار با موبایل</div>
+<section class="hero">
+<img src="logo.png" class="logo">
+
+<h1>GRAHAM BOT</h1>
+
+<p>
+ربات حرفه‌ای مدیریت گروه و ابزارهای هوشمند روبیکا
+</p>
+
+<br>
+
+<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">
+ورود به Graham Bot
+</a>
+
+<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">
+ورود به Bomber Bot
+</a>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+<h2>5000+</h2>
+<p>کاربر</p>
 </div>
 
-<footer>
-    👑 مدیریت: @admin10blue
-</footer>
+<div class="stat">
+<h2>400+</h2>
+<p>گروه</p>
+</div>
 
-<script>
-setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-}, 2000);
-</script>
+<div class="stat">
+<h2>99.9%</h2>
+<p>پایداری</p>
+</div>
+
+</section>
+
+<section class="cards">
+
+<div class="card">
+<h3>مدیریت گروه</h3>
+<p>مدیریت کامل گروه‌های روبیکا</p>
+</div>
+
+<div class="card">
+<h3>ضدلینک</h3>
+<p>جلوگیری از تبلیغات و لینک‌های مزاحم</p>
+</div>
+
+<div class="card">
+<h3>ضداسپم</h3>
+<p>کنترل پیام‌های اسپم و مخرب</p>
+</div>
+
+<div class="card">
+<h3>هوش مصنوعی</h3>
+<p>ابزارهای هوشمند و کاربردی</p>
+</div>
+
+<div class="card">
+<h3>دانلودر</h3>
+<p>دانلود محتوا با سرعت بالا</p>
+</div>
+
+<div class="card">
+<h3>امنیت</h3>
+<p>سیستم حرفه‌ای حفاظت از گروه</p>
+</div>
+
+</section>
+
+<section class="hero">
+<h1>مدیریت</h1>
+
+<p>@admin10blue</p>
+</section>
+
+<footer>
+© 2026 Graham Bot
+</footer>
 
 </body>
 </html>
