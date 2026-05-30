@@ -1,195 +1,211 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Graham</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graham</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
+}
 
-  <style>
-    body{
-      background:#050505;
-      overflow-x:hidden;
-      font-family:tahoma;
-    }
+body{
+background:#050510;
+color:white;
+overflow-x:hidden;
+}
 
-    .glow{
-      box-shadow:0 0 25px rgba(59,130,246,.5);
-    }
+header{
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+}
 
-    .card{
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,0.1);
-    }
-  </style>
+.logo{
+height:70px;
+border-radius:20px;
+box-shadow:0 0 25px #6d5cff;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+}
+
+.hero h1{
+font-size:60px;
+background:linear-gradient(90deg,#00c3ff,#b700ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+margin-top:15px;
+color:#ccc;
+font-size:20px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:15px 30px;
+border-radius:15px;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:.3s;
+}
+
+.blue{
+background:#008cff;
+}
+
+.purple{
+background:#7b2cff;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#6fb8ff;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+text-align:center;
+padding:40px;
+}
+
+.stat h2{
+font-size:40px;
+color:#8c6cff;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#aaa;
+}
+</style>
 </head>
 
-<body class="text-white">
+<body>
 
-  <header class="flex justify-between items-center p-6 border-b border-white/10">
-    <h1 class="text-4xl font-bold text-blue-400">
-      Graham
-    </h1>
+<header>
+<h2>Graham</h2>
+<img src="logo.png" class="logo">
+</header>
 
-    <nav class="flex gap-5 text-gray-300">
-      <a href="#features">امکانات</a>
-      <a href="#panel">پنل مدیریت</a>
-      <a href="#contact">تماس</a>
-    </nav>
-  </header>
+<section class="hero">
+<img src="logo.png" class="logo">
 
-  <section class="text-center py-28 px-5">
+<h1>GRAHAM BOT</h1>
 
-    <h2 class="text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-      ربات حرفه‌ای روبیکا
-    </h2>
+<p>
+ربات حرفه‌ای مدیریت گروه و ابزارهای هوشمند روبیکا
+</p>
 
-    <p class="text-gray-300 text-xl max-w-3xl mx-auto leading-10">
-      مدیریت گروه، ضدلینک، ضداسپم، دانلودر، ابزار هوش مصنوعی و امکانات حرفه‌ای برای کاربران روبیکا
-    </p>
+<br>
 
-    <div class="mt-12 flex justify-center gap-5 flex-wrap">
+<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">
+ورود به Graham Bot
+</a>
 
-      <a href="https://rubika.ir/GrahamBot"
-      target="_blank"
-      class="bg-blue-500 hover:bg-blue-400 transition px-10 py-4 rounded-2xl text-xl glow">
-        ورود به ربات
-      </a>
+<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">
+ورود به Bomber Bot
+</a>
 
-      <button class="bg-purple-600 hover:bg-purple-500 transition px-10 py-4 rounded-2xl text-xl">
-        مشاهده امکانات
-      </button>
+</section>
 
-    </div>
+<section class="stats">
 
-  </section>
+<div class="stat">
+<h2>5000+</h2>
+<p>کاربر</p>
+</div>
 
-  <section id="features" class="py-20 px-6">
+<div class="stat">
+<h2>400+</h2>
+<p>گروه</p>
+</div>
 
-    <h3 class="text-5xl text-center font-bold text-purple-400 mb-16">
-      امکانات ربات
-    </h3>
+<div class="stat">
+<h2>99.9%</h2>
+<p>پایداری</p>
+</div>
 
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+</section>
 
-      <div class="card rounded-3xl p-8 hover:scale-105 transition">
-        <h4 class="text-2xl text-blue-300 font-bold mb-5">
-          مدیریت حرفه‌ای گروه
-        </h4>
+<section class="cards">
 
-        <p class="text-gray-400 leading-8">
-          کنترل کامل گروه و کاربران با سرعت بالا
-        </p>
-      </div>
+<div class="card">
+<h3>مدیریت گروه</h3>
+<p>مدیریت کامل گروه‌های روبیکا</p>
+</div>
 
-      <div class="card rounded-3xl p-8 hover:scale-105 transition">
-        <h4 class="text-2xl text-purple-300 font-bold mb-5">
-          ضدلینک و ضداسپم
-        </h4>
+<div class="card">
+<h3>ضدلینک</h3>
+<p>جلوگیری از تبلیغات و لینک‌های مزاحم</p>
+</div>
 
-        <p class="text-gray-400 leading-8">
-          امنیت حرفه‌ای و جلوگیری از تبلیغات
-        </p>
-      </div>
+<div class="card">
+<h3>ضداسپم</h3>
+<p>کنترل پیام‌های اسپم و مخرب</p>
+</div>
 
-      <div class="card rounded-3xl p-8 hover:scale-105 transition">
-        <h4 class="text-2xl text-blue-300 font-bold mb-5">
-          دانلودر حرفه‌ای
-        </h4>
+<div class="card">
+<h3>هوش مصنوعی</h3>
+<p>ابزارهای هوشمند و کاربردی</p>
+</div>
 
-        <p class="text-gray-400 leading-8">
-          دانلود موزیک و ویدیو با سرعت بالا
-        </p>
-      </div>
+<div class="card">
+<h3>دانلودر</h3>
+<p>دانلود محتوا با سرعت بالا</p>
+</div>
 
-    </div>
+<div class="card">
+<h3>امنیت</h3>
+<p>سیستم حرفه‌ای حفاظت از گروه</p>
+</div>
 
-  </section>
+</section>
 
-  <section id="panel" class="py-20 px-6">
+<section class="hero">
+<h1>مدیریت</h1>
 
-    <div class="max-w-5xl mx-auto card rounded-[40px] p-10">
+<p>@admin10blue</p>
+</section>
 
-      <h3 class="text-5xl font-bold text-center text-blue-400 mb-14">
-        پنل مدیریت حرفه‌ای
-      </h3>
-
-      <div class="grid md:grid-cols-2 gap-8">
-
-        <div class="bg-black/40 rounded-3xl p-8 border border-white/10">
-
-          <h4 class="text-3xl font-bold text-purple-300 mb-6">
-            مدیریت کامل
-          </h4>
-
-          <ul class="space-y-4 text-gray-300 text-lg">
-            <li>• مدیریت تنظیمات گروه</li>
-            <li>• فعال‌سازی امکانات</li>
-            <li>• مدیریت کاربران</li>
-            <li>• امنیت حرفه‌ای</li>
-          </ul>
-
-        </div>
-
-        <div class="bg-black/40 rounded-3xl p-8 border border-white/10">
-
-          <h4 class="text-3xl font-bold text-blue-300 mb-6">
-            سرعت و امنیت
-          </h4>
-
-          <ul class="space-y-4 text-gray-300 text-lg">
-            <li>• سرور قدرتمند</li>
-            <li>• طراحی مدرن</li>
-            <li>• رابط کاربری حرفه‌ای</li>
-            <li>• سرعت بالا</li>
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="py-20 px-6">
-
-    <div class="max-w-4xl mx-auto card rounded-3xl p-10 text-center"><h3 class="text-5xl font-bold text-purple-400 mb-8">
-        بات اصلی
-      </h3>
-
-      <p class="text-3xl text-blue-300 font-bold mb-6">
-        بمبر بات
-      </p>
-
-      <a href="https://rubika.ir/Bomber10Bot"
-      target="_blank"
-      class="inline-block bg-purple-600 hover:bg-purple-500 transition px-10 py-4 rounded-2xl text-xl glow">
-        ورود به @Bomber10Bot
-      </a>
-
-    </div>
-
-  </section>
-
-  <footer id="contact"
-  class="border-t border-white/10 py-12 text-center text-gray-400">
-
-    <p class="text-2xl text-blue-300 mb-4">
-      ارتباط با مدیریت
-    </p>
-
-    <p class="text-3xl font-bold text-purple-400">
-      @admin10blue
-    </p>
-
-    <p class="mt-8 text-gray-500">
-      © Graham
-    </p>
-
-  </footer>
+<footer>
+© 2026 Graham Bot
+</footer>
 
 </body>
 </html>
