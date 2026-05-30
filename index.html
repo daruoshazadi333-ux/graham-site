@@ -19,7 +19,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* 🌌 background */
+/* 🌌 stars */
 .stars{
 position:fixed;
 width:100%;
@@ -178,62 +178,43 @@ padding:8px;
 cursor:pointer;
 }
 
-/* 🛠️ admin */
-#adminPanel{
+/* 👑 admin popup */
+#adminPopup{
 position:fixed;
 inset:0;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
 display:none;
 justify-content:center;
 align-items:center;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
 }
 
 .adminBox{
-width:90%;
-max-width:600px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(0,195,255,0.4);
-border-radius:20px;
-padding:20px;
-}
-
-.msgBox{
-display:flex;
-justify-content:space-between;
-align-items:center;
 background:rgba(255,255,255,0.08);
-padding:10px;
-border-radius:12px;
-margin:8px 0;
-}
-
-.delBtn{
-background:#ff3b3b;
-border:none;
-color:white;
-padding:5px 10px;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* 👑 admin section */
-.adminSection{
+border:1px solid rgba(0,195,255,0.3);
+padding:30px;
+border-radius:20px;
 text-align:center;
-padding:50px 20px;
-background:rgba(255,255,255,0.03);
-border-top:1px solid rgba(255,255,255,0.1);
-border-bottom:1px solid rgba(255,255,255,0.1);
-margin-top:30px;
+width:320px;
+animation:pop .3s ease;
 }
 
-.adminSection h2{
-color:#00c3ff;
+@keyframes pop{
+from{transform:scale(0.7);opacity:0;}
+to{transform:scale(1);opacity:1;}
 }
 
-.adminSection p{
-color:#ccc;
-margin:10px 0;
+.adminBtn{
+position:fixed;
+bottom:90px;
+right:20px;
+padding:12px 18px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#00c3ff,#7b2cff);
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px rgba(0,195,255,0.4);
 }
 </style>
 </head>
@@ -255,28 +236,12 @@ margin:10px 0;
 
 <a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Bot</a>
 <a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">Bomber Bot</a>
-
-<br>
-
-<button class="btn blue" onclick="openAdmin()">پشتیبانی</button>
 </section>
 
 <section class="stats">
 <div><h2>5000+</h2><p>کاربر</p></div>
 <div><h2>400+</h2><p>گروه</p></div>
 <div><h2>99.9%</h2><p>پایداری</p></div>
-</section><!-- 👑 مدیریت -->
-<section class="adminSection">
-<h2>👑 مدیریت</h2>
-<p>ادمین اصلی: @admin10blue</p>
-
-<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">
-💬 ارتباط با ادمین
-</a>
-
-<a class="btn purple" href="https://rubika.ir/GrahamBot" target="_blank">
-🤖 ورود به ربات
-</a>
 </section>
 
 <section class="cards">
@@ -296,36 +261,39 @@ margin:10px 0;
 <div id="supportBox">
 <div class="supportHeader">پشتیبانی</div>
 
-<div id="chat"></div>
-
-<div class="inputBox">
+<div id="chat"></div><div class="inputBox">
 <input id="msg" placeholder="پیام..." />
 <button onclick="sendMsg()">➤</button>
 </div>
 </div>
 
-<!-- 🛠️ admin -->
-<div id="adminPanel">
+<!-- 👑 admin button -->
+<button class="adminBtn" onclick="openAdmin()">👑 مدیریت</button>
+
+<!-- 👑 admin popup -->
+<div id="adminPopup">
+
 <div class="adminBox">
 
-<h2>پنل پشتیبانی</h2>
+<h2>👑 مدیریت</h2>
+<p>ادمین: @admin10blue</p>
 
-<input id="pass" type="password" placeholder="رمز...">
-<button class="delBtn" onclick="login()">ورود</button>
+<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">💬 روبیکا</a>
+<a class="btn purple" href="https://rubika.ir/GrahamBot" target="_blank">🤖 بات</a>
 
-<hr>
+<br><br>
 
-<div id="msgs"></div>
-
-<button class="delBtn" onclick="closeAdmin()">بستن</button>
+<button class="btn blue" onclick="closeAdmin()">بستن</button>
 
 </div>
+
 </div>
 
 <script>
 
 /* stars */
 const stars=document.getElementById("stars");
+
 for(let i=0;i<80;i++){
 let s=document.createElement("div");
 s.className="star";
@@ -334,7 +302,7 @@ s.style.animationDuration=(2+Math.random()*5)+"s";
 stars.appendChild(s);
 }
 
-/* messages */
+/* support */
 let messages=JSON.parse(localStorage.getItem("msgs")||"[]");
 
 function render(){
@@ -363,33 +331,11 @@ render();
 
 /* admin */
 function openAdmin(){
-document.getElementById("adminPanel").style.display="flex";
+document.getElementById("adminPopup").style.display="flex";
 }
 
 function closeAdmin(){
-document.getElementById("adminPanel").style.display="none";
-}
-
-function login(){
-let pass=document.getElementById("pass").value;
-
-if(pass==="Armin92abedi920"){
-show();
-}else{
-alert("❌ رمز اشتباه");
-}
-}
-
-function show(){
-let box=document.getElementById("msgs");
-box.innerHTML="";
-
-messages.forEach((m,i)=>{
-let d=document.createElement("div");
-d.className="msgBox";
-d.innerHTML=(i+1)+". "+m;
-box.appendChild(d);
-});
+document.getElementById("adminPopup").style.display="none";
 }
 
 </script>
