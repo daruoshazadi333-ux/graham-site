@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graham Platform</title>
+<title>Graham Bot</title>
 
 <style>
 *{
@@ -21,29 +21,28 @@ color:white;
 /* pages */
 .page{
 display:none;
-padding:20px;
-min-height:100vh;
+padding:40px 20px;
 }
 
-.page.active{
+.active{
 display:block;
 }
 
 /* header */
 header{
 text-align:center;
-padding:15px;
+padding:20px;
 background:rgba(255,255,255,0.05);
 }
 
 /* hero */
 .hero{
 text-align:center;
-padding:50px 10px;
+padding:80px 20px;
 }
 
 h1{
-font-size:40px;
+font-size:50px;
 background:linear-gradient(90deg,#00c3ff,#b700ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -51,31 +50,26 @@ background:linear-gradient(90deg,#00c3ff,#b700ff);
 
 /* buttons */
 .btn{
-display:block;
-width:90%;
-max-width:300px;
-margin:10px auto;
-padding:12px;
+display:inline-block;
+margin:10px;
+padding:12px 25px;
 border-radius:12px;
-border:none;
-text-align:center;
+text-decoration:none;
 color:white;
 cursor:pointer;
-text-decoration:none;
-font-size:16px;
+border:none;
 }
 
 .blue{background:#008cff;}
 .purple{background:#7b2cff;}
-.red{background:#ff4d4d;}
 
 /* box */
 .box{
+margin:20px auto;
+max-width:400px;
 background:rgba(255,255,255,0.05);
 padding:15px;
 border-radius:12px;
-margin:20px auto;
-max-width:400px;
 }
 
 input,textarea{
@@ -84,33 +78,22 @@ margin:8px 0;
 padding:10px;
 border:none;
 outline:none;
-border-radius:8px;
 background:rgba(255,255,255,0.08);
 color:white;
+border-radius:8px;
 }
 
-/* features */
-.features{
-display:grid;
-grid-template-columns:1fr;
-gap:10px;
+/* nav */
+.nav{
+text-align:center;
 margin-top:20px;
 }
 
-.feature{
-background:rgba(255,255,255,0.06);
-padding:12px;
-border-radius:10px;
-text-align:center;
-}
-
-/* list */
-.listItem{
-background:rgba(255,255,255,0.08);
-padding:10px;
-margin:8px 0;
-border-radius:10px;
-font-size:13px;
+/* price */
+.price{
+font-size:25px;
+color:#00c3ff;
+margin:10px 0;
 }
 </style>
 </head>
@@ -118,130 +101,76 @@ font-size:13px;
 <body>
 
 <header>
-<h3>Graham Platform</h3>
+<h2>Graham Platform</h2>
 </header>
 
-<!-- HOME -->
-<div id="home" class="page active">
+<!-- HOME PAGE -->
+<section id="home" class="page active">
 
 <div class="hero">
+
 <h1>GRAHAM BOT</h1>
 
-<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">ورود به Graham Bot</a>
-<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">ورود به Bomber Bot</a>
+<a class="btn blue" href="https://rubika.ir/GrahamBot" target="_blank">
+ورود به Graham Bot
+</a>
+
+<a class="btn purple" href="https://rubika.ir/Bomber10Bot" target="_blank">
+ورود به Bomber Bot
+</a>
 
 </div>
 
-<button class="btn blue" onclick="go('ads')">📢 تبلیغ ربات</button>
-<button class="btn red" onclick="go('admin')">🛠 پنل مدیریت</button>
+<div class="nav">
+
+<button class="btn blue" onclick="showPage('ads')">
+📢 تبلیغ ربات
+</button>
 
 </div>
 
-<!-- ADS -->
-<div id="ads" class="page">
+</section>
 
-<h2 style="text-align:center;">تبلیغ ربات</h2>
-<p style="text-align:center;color:#00c3ff;">💰 20,000 تومان</p>
+<!-- ADS PAGE -->
+<section id="ads" class="page">
+
+<div class="hero">
+
+<h1>تبلیغ ربات</h1>
+
+<p class="price">💰 20,000 تومان</p>
 
 <div class="box">
 
-<input id="name" placeholder="اسم ربات">
-<input id="link" placeholder="لینک ربات">
-<textarea id="desc" placeholder="توضیح"></textarea>
+<input placeholder="اسم ربات">
+<input placeholder="لینک ربات">
+<textarea placeholder="توضیح ربات"></textarea>
 
-<button class="btn blue" onclick="saveAd()">ثبت تبلیغ</button>
-
-</div>
-
-<div class="features">
-
-<div class="feature">✔ نمایش در سایت</div>
-<div class="feature">✔ دیده شدن کاربران</div>
-<div class="feature">✔ افزایش عضو</div>
-<div class="feature">✔ تبلیغ حرفه‌ای</div>
+<a class="btn blue" href="https://rubika.ir/admin10blue" target="_blank">
+📩 ارسال درخواست در روبیکا
+</a>
 
 </div>
 
-<button class="btn purple" onclick="go('home')">⬅ برگشت</button>
+</div>
+
+<div class="nav">
+
+<button class="btn purple" onclick="showPage('home')">
+⬅ برگشت به صفحه اصلی
+</button>
 
 </div>
 
-<!-- ADMIN -->
-<div id="admin" class="page">
-
-<h2 style="text-align:center;">پنل مدیریت</h2>
-
-<div class="box">
-<div id="list"></div>
-</div>
-
-<button class="btn purple" onclick="go('home')">⬅ برگشت</button>
-
-</div>
+</section>
 
 <script>
-
-/* page switch FIXED for mobile */
-function go(page){
-
+function showPage(page){
 document.querySelectorAll('.page').forEach(p=>{
 p.classList.remove('active');
 });
-
 document.getElementById(page).classList.add('active');
-
 }
-
-/* save ads */
-function saveAd(){
-
-let n=document.getElementById("name").value;
-let l=document.getElementById("link").value;
-let d=document.getElementById("desc").value;
-
-if(!n || !l){
-alert("اسم و لینک الزامی است");
-return;
-}
-
-let data=JSON.parse(localStorage.getItem("ads")||"[]");
-
-data.push({n,l,d});
-
-localStorage.setItem("ads",JSON.stringify(data));
-
-document.getElementById("name").value="";
-document.getElementById("link").value="";
-document.getElementById("desc").value="";
-
-load();
-
-alert("ثبت شد ✅");
-
-}
-
-/* load admin */
-function load(){
-
-let list=document.getElementById("list");
-let data=JSON.parse(localStorage.getItem("ads")||"[]");
-
-list.innerHTML="";
-
-data.forEach(a=>{
-list.innerHTML+=
-<div class="listItem">
-<b>${a.n}</b><br>
-${a.d}<br>
-<a href="${a.l}" target="_blank" style="color:#00c3ff;">لینک</a>
-</div>
-;
-});
-
-}
-
-load();
-
 </script>
 
 </body>
